@@ -41,6 +41,9 @@ ul {
 /* HEADER */
 .page-header {
     border-bottom: 1px solid #e7e9fc;
+    box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
+        0px 1px 1px rgba(46, 47, 66, 0.16),
+        0px 1px 6px rgba(46, 47, 66, 0.08);;
 }
 
 .page-header .container {
@@ -113,11 +116,16 @@ ul {
         color: #404BBF;
         text-decoration: none;
         padding: 24px 0;
+        position: relative;
+        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .current::after{
     display: block;
+    position: absolute;
     content: "";
+    left: 0;
+    bottom: -1px;
     border-radius: 2px;
     width: 48px;
     height: 4px;
@@ -172,10 +180,12 @@ ul {
 .main-title {
     background-color: #2E2F42;
     padding: 188px 0;
-    background-image: linear-gradient(90deg, rgba(46, 47, 66, 0.7) 0%, rgba(46, 47, 66, 0.7) 100%), url("office-img.jpg");
+    background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url("office-img.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
+        max-width: 1440px;
+        margin: 0 auto;
 }
 
 .main-title .container {
@@ -256,6 +266,7 @@ li.advantages-list-item {
     border: 1px solid #8E8F99;
     border-radius: 4px;
     margin-bottom: 8px;
+    height: 112px;
 }
 
 
@@ -350,21 +361,19 @@ li.team-list-item {
     width: 40px;
     height: 40px;
     background-color: #4D5AE5;
-    border-radius: 100%;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition-property: background-color;
-    transition-duration: 250ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.logo-contacts .link:hover {
-    background-color: #31D0AA;
+.logo-contacts .link:hover, .logo-contacts .link:focus, .logo-contacts .link:active {
+    background-color: #404bbf;
 }
 
 .logo-contacts .icon {
-    fill: #ffffff;
+    fill: #f4f4fd;
 }
 
 /* 4th SECTION */
@@ -384,8 +393,11 @@ padding: 0px;
 li.potfolio-list-item {
     border: 1px solid #E7E9FC;
     width: calc((100% - 48px) / 3);
-    position: relative;
-    overflow: hidden;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.potfolio-list-item:hover {
+    box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
 .portfolio-container {
@@ -410,26 +422,29 @@ li.potfolio-list-item {
     color: #434455;
 }
 
-.box {
+.overlay {
     position: relative;
     overflow: hidden;
 }
 
-.portfolio-overlay {
+.overlay-text {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    transform: translateX(-100%);
-    background-color: #4D5AE5;
-    transition-property: transform;
-    transition-duration: 250ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #f4f4fd;
+    padding: 40px 32px;
+    transform: translateY(100%);
+    background-color: #4d5ae5;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.portfolio-list-item:hover .portfolio-overlay {
-    transform: translateX(0);
+.portfolio-list-item:hover .overlay-text {
+    transform: translateY(0);
 }
 
 /* FOOTER */
@@ -441,7 +456,11 @@ li.potfolio-list-item {
 
 .page-end .container {
     display: flex;
-    gap: 120px;
+    align-items: baseline;
+}
+
+.website-info {
+    margin-right: 120px;
 }
 
 .page-end .socials {
@@ -458,11 +477,27 @@ li.potfolio-list-item {
     margin-bottom: 16px;
 }
 
+.page-end .link:hover, .page-end .link:active, .page-end .link:focus {
+    background-color: #31d0aa;
+}
+
+.page-end .icon {
+    fill: #f4f4fd;
+}
+
 .footer-text {
 max-width: 264px;
-
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: #F4F4FD;
+}
+
+.footer-subtitle {
+    font-weight: 500;
+    font-size: 16px;
+        line-height: 150%;
+        letter-spacing: 0.02em;
+        color: #FFFFFF;
+        margin-bottom: 16px;
 }
